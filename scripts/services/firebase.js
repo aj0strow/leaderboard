@@ -1,28 +1,28 @@
-define('Firebase', [], function () {
-  function ref (path) {
-    var root = 'https://leaderboard-social.firebaseio.com'
-    return new Firebase(root + path)
+define('Firebase', [
+  'Session',
+], function (Session) {
+  var root = 'https://leaderboard-social.firebaseio.com'
+
+  function ref (parts) {
+    var url = [ root, Session.user.uid ].concat(parts).join('/')
+    return new Firebase(url)
   }
 
-  function collection (path) {
+  function collection () {
     var Collection = Backbone.Firebase.Collection.extend({
-      firebase: ref(path)
+      firebase: ref(_.toArray(arguments))
     })
-    var collection = new Collection
-    collection.path = path
-    return collection
+    return new Collection
   }
 
-  function model (path) {
+  function model () {
     var Model = Backbone.Firebase.Model.extend({
-      firebase: ref(path)
+      firebase: ref(_.toArray(arguments))
     })
     var model = new Model
     model.on('sync', function () {
       if (!model.id) { this.trigger('error') }
     })
-    
-    model.path = path
     return model
   }
 

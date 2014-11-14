@@ -2,8 +2,7 @@ define('DashboardView', [
   'View',
   'Session',
   'Dashboard.LeaderboardView',
-  'Firebase',
-], function (View, Session, LeaderboardView, Firebase) {
+], function (View, Session, LeaderboardView) {
   var DashboardView = View.extend({
     template: 'dashboard',
 
@@ -15,9 +14,7 @@ define('DashboardView', [
     },
 
     initialize: function () {
-      this.collection = Firebase.collection('/leaderboards/' + Session.user.uid)
       this.listenTo(this.collection, 'add', this.add)
-      this.views = {}
     },
 
     add: function (leaderboard) {

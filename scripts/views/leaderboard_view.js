@@ -12,7 +12,6 @@ define('LeaderboardView', [
     },
 
     initialize: function () {
-      this.collection = new Backbone.Collection
       this.autocomplete = new AutocompleteView()
       this.listenTo(this.model, 'sync', this.render)
       this.listenTo(this.model, 'error', this.back)
@@ -21,10 +20,10 @@ define('LeaderboardView', [
     },
 
     render: function () {
-      if (!this.model.id) { return this }
       View.prototype.render.call(this)
       this.autocomplete.setElement(this.$('[view="autocomplete"]'))
       this.autocomplete.render()
+      this.collection.each(this.show, this)
       return this
     },
 
@@ -33,7 +32,7 @@ define('LeaderboardView', [
     },
 
     add: function (model) {
-      this.collection.add(model)      
+      this.collection.create(model.toJSON())      
     },
 
     show: function (model) {
@@ -43,7 +42,9 @@ define('LeaderboardView', [
     },
 
     destroy: function () {
-      this.collection.reset()
+      if (this.collection.length) {
+        this.collection.reset()
+      }
       this.model.destroy({})
       this.back()
     }

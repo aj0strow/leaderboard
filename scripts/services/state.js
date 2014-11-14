@@ -13,13 +13,15 @@ define('State', [
 
   Session.on('view:dashboard', function () {
     save('view:dashboard')
-    render(new DashboardView())
+    var collection = Firebase.collection('leaderboards')
+    render(new DashboardView({ collection: collection }))
   })
 
   Session.on('view:leaderboard', function (id) {
     save('view:leaderboard', id)
-    var model = Firebase.model('/leaderboards/' + Session.user.uid + '/' + id)
-    render(new LeaderboardView({ model: model }))
+    var model = Firebase.model('leaderboards', id)
+    var collection = Firebase.collection('pages', id)
+    render(new LeaderboardView({ model: model, collection: collection }))
   })
 
   function save () {

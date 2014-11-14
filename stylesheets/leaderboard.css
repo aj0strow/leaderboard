@@ -1,5 +1,13 @@
 .leaderboard-page {
-  
+  margin-top: 10px;
+  background: #fff;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.leaderboard-page-likes {
+  color: #777;
+  font-size: 2em;
 }
 
 .leaderboard-search {
