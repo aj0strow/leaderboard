@@ -1,0 +1,17 @@
+{
+  "name": "leaderboard",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "underscore": "~1.7.0",
+    "backbone": "~1.1.2",
+    "almond": "~0.3.0",
+    "bluebird": "~2.3.11",
+    "hogan": "~3.0.2",
+    "backfire": "~0.4.0"
+  },
+  "resolutions": {
+    "backbone": "<=1.1.0",
+    "underscore": "~1.5.2"
+  }
+}

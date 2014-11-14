@@ -1,0 +1,30 @@
+*:focus {
+  outline: none;
+}
+
+[click] {
+  cursor: pointer;
+}
+
+body {
+  background-color: #e9eaed;
+}
+
+.jumbotron,
+.btn,
+.form-control {
+  border-radius: 1px !important;
+}
+
+.jumbotron {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.facebook-image {
+  width: 50px;
+  height: 50px;
+}

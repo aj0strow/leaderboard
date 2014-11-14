@@ -1,0 +1,24 @@
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="pull-left">
+        <span class="glyphicon glyphicon-user"></span> {{ user.facebook.displayName }}        
+      </div>
+      <div class="pull-left" click="logout">
+        <span class="glyphicon glyphicon-off"></span> logout
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" repeat="leaderboard">
+    <div class="col-sm-4 col-md-3">
+      <div class="thumbnail dashboard-new text-center" click="create">
+        <div class="caption">
+          <div class="glyphicon glyphicon-pencil"></div>
+          <div>create new</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

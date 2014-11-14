@@ -1,0 +1,18 @@
+.dashboard-new {
+  padding-top: 50px;
+  height: 200px;
+}
+
+.dashboard-image {
+  width: 50px;
+  height: 50px;
+}
+
+.thumbnail {
+  border-radius: 1px !important;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.thumbnail:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}

@@ -1,0 +1,27 @@
+<div class="container">
+  <br><br><br><br>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="jumbotron">
+        <h2>LEADERBOARD</h2>
+        <br>
+        <p>
+          Find out which page has more likes.
+          Create a dashboard and add pages, then leaderboard orders the pages by number of likes.
+        </p>
+        <br>
+        <button
+          click="login"
+          type="button"
+          class="btn btn-primary btn-lg"
+        >Connect To Facebook</button>
+        {{#error}}
+        <span
+          style="padding-left: 20px;"
+          class="text-danger"
+        >{{ error }}</span>
+        {{/error}}
+      </div>
+    </div>
+  </div>
+</div>

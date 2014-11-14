@@ -1,0 +1,9 @@
+{
+  "name": "leaderboard",
+  "private": true,
+  "dependencies": {
+    "gulp": "^3.8.9",
+    "gulp-concat": "^2.4.1",
+    "gulp-hogan-compile": "^0.4.1"
+  }
+}
