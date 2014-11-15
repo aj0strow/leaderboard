@@ -7,7 +7,7 @@
 
 .leaderboard-page-likes {
   color: #777;
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 .leaderboard-search {
@@ -24,4 +24,9 @@
 
 .leaderboard-suggestion:hover {
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.leaderboard-image {
+  width: 50px;
+  height: 50px;
 }

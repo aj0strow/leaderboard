@@ -1,8 +1,9 @@
 define('DashboardView', [
   'View',
   'Session',
+  'Auth',
   'Dashboard.LeaderboardView',
-], function (View, Session, LeaderboardView) {
+], function (View, Session, Auth, LeaderboardView) {
   var DashboardView = View.extend({
     template: 'dashboard',
 
@@ -37,7 +38,7 @@ define('DashboardView', [
     },
 
     logout: function (ev) {
-      Session.logout()
+      Auth.logout()
     },
 
     select: function (model) {

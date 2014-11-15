@@ -32,7 +32,8 @@ define('LeaderboardView', [
     },
 
     add: function (model) {
-      this.collection.create(model.toJSON())      
+      var data = model.toJSON()
+      this.collection.add(new Backbone.Model(data))
     },
 
     show: function (model) {
@@ -42,10 +43,8 @@ define('LeaderboardView', [
     },
 
     destroy: function () {
-      if (this.collection.length) {
-        this.collection.reset()
-      }
-      this.model.destroy({})
+      this.collection.firebase.remove()
+      this.model.firebase.remove()
       this.back()
     }
   })

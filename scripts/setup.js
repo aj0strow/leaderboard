@@ -1,7 +1,25 @@
 require([
-  'State'
-], function (State) {  
+  'State',
+  'Session',
+  'Auth'
+], function (State, Session, Auth) {
+  FIREBASE_URL = 'https://leaderboard-social.firebaseio.com'
+
+  FB.init({
+    appId: '721946387873528',
+    status: true,
+    xfbml: true,
+    version: 'v2.0',
+  })
+
   $(function () {
-    State.run()
+    Auth.getStatus()
+    .then(function (user) {
+      Session.user = user
+    })
+    .catch(_.identity)
+    .finally(function () {
+      State.run()
+    })
   })
 })

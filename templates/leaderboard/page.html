@@ -3,11 +3,11 @@
     <div class="leaderboard-page">   
       <div class="row">
         <div class="col-xs-8">
-          <img class="leaderboard-image" src="https://graph.facebook.com/1408982602703881/picture?type=square">
-          The McTavish Radish
+          <img class="leaderboard-image" src="https://graph.facebook.com/{{ model.id }}/picture?type=square">
+          {{ model.name }}
         </div>
         <div class="col-xs-4 leaderboard-page-likes text-right">
-          4830
+          {{ model.likes }}
         </div>
       </div>   
     </div>
