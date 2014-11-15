@@ -1,12 +1,17 @@
 define('Leaderboard.AutocompleteView', [
   'View',
-  'Leaderboard.SuggestionView'
-], function (View, SuggestionView) {
+  'Leaderboard.SuggestionView',
+  'PageModel'
+], function (View, SuggestionView, PageModel) {
+  var PageCollection = Backbone.Collection.extend({
+    model: PageModel
+  })
+
   var AutocompleteView = View.extend({
     template: 'leaderboard/autocomplete',
 
     initialize: function () {
-      this.collection = new Backbone.Collection
+      this.collection = new PageCollection
       this.collection.on('reset', function (x, options) {
         _.invoke(options.previousModels, 'trigger', 'remove')
       })
@@ -15,7 +20,10 @@ define('Leaderboard.AutocompleteView', [
 
     search: _.debounce(function (ev) {
       var str = $(ev.delegateTarget).val()
-      var params = { q: str, type: 'page', limit: 10, fields: 'id,name,likes' }
+      var params = {
+        q: str, type: 'page', limit: 10,
+        fields: 'id,name,link,category,location,best_page,likes'
+      }  
       FB.api('/search', params, function (response) {
         this.collection.reset(response.data)
       }.bind(this))

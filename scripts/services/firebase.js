@@ -1,33 +1,26 @@
 define('Firebase', [
   'Session',
 ], function (Session) {
-  var root = 'https://leaderboard-social.firebaseio.com'
-
-  function ref (parts) {
-    var url = [ root, Session.user.uid ].concat(parts).join('/')
+  function ref () {
+    var parts = [ FIREBASE_URL, Session.user.uid ]
+    parts = parts.concat(_.toArray(arguments))
+    var url = parts.join('/')
     return new Firebase(url)
   }
 
-  function collection () {
-    var Collection = Backbone.Firebase.Collection.extend({
-      firebase: ref(_.toArray(arguments))
-    })
-    return new Collection
-  }
+  var Model = Backbone.Firebase.Model.extend({
+    initialize: function () {
+      this.listenTo(this, 'sync', function () {
+        if (!this.id) { this.trigger('error') }
+      })
+    }
+  })
 
-  function model () {
-    var Model = Backbone.Firebase.Model.extend({
-      firebase: ref(_.toArray(arguments))
-    })
-    var model = new Model
-    model.on('sync', function () {
-      if (!model.id) { this.trigger('error') }
-    })
-    return model
-  }
+  var Collection = Backbone.Firebase.Collection
 
   return {
-    collection: collection,
-    model: model,
+    ref: ref,
+    Model: Model,
+    Collection: Collection
   }
 })

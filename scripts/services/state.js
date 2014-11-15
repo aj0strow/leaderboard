@@ -5,7 +5,8 @@ define('State', [
   'DashboardView',
   'LeaderboardView',
   'Storage',
-], function (Session, Firebase, WelcomeView, DashboardView, LeaderboardView, Storage) {
+  'PageModel'
+], function (Session, Firebase, WelcomeView, DashboardView, LeaderboardView, Storage, PageModel) {    
   Session.on('view:welcome', function () {
     save('view:welcome')
     render(new WelcomeView)
@@ -13,14 +14,24 @@ define('State', [
 
   Session.on('view:dashboard', function () {
     save('view:dashboard')
-    var collection = Firebase.collection('leaderboards')
+    var Collection = Firebase.Collection.extend({
+      firebase: Firebase.ref('leaderboards')
+    })
+    var collection = new Collection
     render(new DashboardView({ collection: collection }))
   })
 
   Session.on('view:leaderboard', function (id) {
     save('view:leaderboard', id)
-    var model = Firebase.model('leaderboards', id)
-    var collection = Firebase.collection('pages', id)
+    var Model = Firebase.Model.extend({
+      firebase: Firebase.ref('leaderboards', id)
+    })
+    var model = new Model
+    var Collection = Firebase.Collection.extend({
+      firebase: Firebase.ref('pages', id),
+      model: PageModel
+    })
+    var collection = new Collection
     render(new LeaderboardView({ model: model, collection: collection }))
   })
 

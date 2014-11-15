@@ -32,14 +32,14 @@ define('LeaderboardView', [
     },
 
     add: function (model) {
-      var data = model.toJSON()
-      this.collection.add(new Backbone.Model(data))
+      this.collection.add(model)
+      this.model.set('updated', Date.now())
     },
 
     show: function (model) {
-      var el = this.$('[repeat="page"]')
+      var $el = this.$('[repeat="page"]')
       var view = new PageView({ model: model })
-      el.prepend(view.render().el)
+      $el.append(view.render().el)
     },
 
     destroy: function () {
