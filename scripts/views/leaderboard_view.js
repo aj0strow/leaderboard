@@ -21,6 +21,7 @@ define('LeaderboardView', [
 
     render: function () {
       View.prototype.render.call(this)
+      this.$pages = this.$('[repeat="page"]')
       this.autocomplete.setElement(this.$('[view="autocomplete"]'))
       this.autocomplete.render()
       this.collection.each(this.show, this)
@@ -37,14 +38,22 @@ define('LeaderboardView', [
     },
 
     show: function (model) {
+      // render view
       var view = new PageView({ model: model })
       var node = view.render().el
+
+      // insert in order
       var index = this.collection.indexOf(model)
       if (index == 0) {
-        this.$('[repeat="page"]').prepend(node)
-      } else {
-        var id = this.collection.at(index - 1).id
-        $('#' + id).after(node)
+        this.$pages.prepend(node)
+      } else  {
+        var prev = this.collection.at(index - 1)
+        var $prev = $('#' + prev.id)
+        if ($prev.length) {
+          $prev.after(node)
+        } else {
+          this.$pages.append(node)
+        }
       }
     },
 
