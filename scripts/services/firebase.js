@@ -16,7 +16,11 @@ define('Firebase', [
     }
   })
 
-  var Collection = Backbone.Firebase.Collection
+  var Collection = Backbone.Firebase.Collection.extend({
+    comparator: function (model) {
+      return _.result(model, 'priority') || model.id
+    }
+  })
 
   return {
     ref: ref,

@@ -3,7 +3,7 @@ define('PageModel', [], function () {
     toJSON: function () {
       var props = _.extend({}, this.attributes)
       props['desc'] = this.getDesc()
-      props['.priority'] = this.getPriority()
+      props['.priority'] = this.priority()
       return props
     },
 
@@ -18,7 +18,7 @@ define('PageModel', [], function () {
       return desc
     },
 
-    getPriority: function () {
+    priority: function () {
       return -this.get('likes')
     },
   })

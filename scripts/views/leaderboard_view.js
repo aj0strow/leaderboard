@@ -32,14 +32,20 @@ define('LeaderboardView', [
     },
 
     add: function (model) {
-      this.collection.add(model)
+      this.collection.add(model.toJSON())
       this.model.set('updated', Date.now())
     },
 
     show: function (model) {
-      var $el = this.$('[repeat="page"]')
       var view = new PageView({ model: model })
-      $el.append(view.render().el)
+      var node = view.render().el
+      var index = this.collection.indexOf(model)
+      if (index == 0) {
+        this.$('[repeat="page"]').prepend(node)
+      } else {
+        var id = this.collection.at(index - 1).id
+        $('#' + id).after(node)
+      }
     },
 
     destroy: function () {
