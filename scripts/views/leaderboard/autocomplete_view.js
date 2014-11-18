@@ -7,6 +7,8 @@ define('Leaderboard.AutocompleteView', [
     model: PageModel
   })
 
+  
+
   var AutocompleteView = View.extend({
     template: 'leaderboard/autocomplete',
 
@@ -20,6 +22,7 @@ define('Leaderboard.AutocompleteView', [
 
     search: _.debounce(function (ev) {
       var str = $(ev.delegateTarget).val()
+      str = str.replace(/^https:\/\/www\.facebook\.com\//, '')
       var params = {
         q: str, type: 'page', limit: 10,
         fields: 'id,name,link,category,location,best_page,likes'

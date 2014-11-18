@@ -1,7 +1,15 @@
 .leaderboard-page {
   margin-top: 10px;
   background: #fff;
+}
+
+.leaderboard-page [click="toggle"] {
+  cursor: inherit;
+}
+
+.leaderboard-page-name {
   font-size: 1.2em;
+  padding-left: 10px;
 }
 
 .leaderboard-image {
@@ -21,6 +29,12 @@
   height: auto !important;
 }
 
+.leaderboard-page-menu {
+  padding: 6px 10px;
+  overflow: hidden;
+  border-top: 1px solid #ccc;
+}
+
 .leaderboard-suggestion {
   margin-top: 3px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -31,4 +45,3 @@
 .leaderboard-suggestion:hover {
   background-color: rgba(255, 255, 255, 0.8);
 }
-

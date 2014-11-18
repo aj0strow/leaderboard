@@ -6,7 +6,7 @@ define('View', [], function () {
     },
 
     onEvent: function (ev) {
-      var target = $(ev.target).closest('[' + ev.type + ']')
+      var target = $(ev.target).closest('a, [' + ev.type + ']')
       ev.delegateTarget = target[0]
       var method = target.attr(ev.type)
       if (method) {

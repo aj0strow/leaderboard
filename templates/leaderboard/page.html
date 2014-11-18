@@ -1,17 +1,26 @@
 <div class="row">  
   <div class="col-md-12">
     <div class="leaderboard-page">   
-      <div class="row">
+      <div class="row" click="toggle">
         <div class="col-xs-8">
           <a href="{{ model.link }}" target="_blank">
             <img class="leaderboard-image" src="https://graph.facebook.com/{{ model.id }}/picture?type=square">
           </a>
-          <span style="padding-left: 10px;">{{ model.name }}</span>
+          <span class="leaderboard-page-name">{{ model.name }}</span>
         </div>
         <div class="col-xs-4 text-right">
           <div class="leaderboard-page-likes ">{{ model.likes }}</div>
         </div>
-      </div>   
+      </div>
+      <div class="row hidden" data-toggle>
+        <div class="col-xs-12">
+          <div class="leaderboard-page-menu">
+            <div class="pull-left" click="destroy">
+              <span class="glyphicon glyphicon-remove-circle"></span> remove page
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
