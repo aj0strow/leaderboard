@@ -26,7 +26,7 @@ define('View', [], function () {
 
     remove: function () {
       this.trigger('remove', this)
-      Backbone.View.remove.call(this)
+      Backbone.View.prototype.remove.call(this)
     }
   })
 
