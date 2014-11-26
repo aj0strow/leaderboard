@@ -1,6 +1,8 @@
 .leaderboard-page {
   margin-top: 10px;
   background: #fff;
+  border: 1px solid;
+  border-color: #e9eaed #dfe0e4 #d0d1d5;
 }
 
 .leaderboard-page [click="toggle"] {

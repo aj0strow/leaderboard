@@ -28,7 +28,6 @@ define('DashboardView', [
     render: function () {
       View.prototype.render.call(this)
       this.collection.each(this.add, this)
-      this.collection.invoke('trigger', 'add')
       return this
     },
 
