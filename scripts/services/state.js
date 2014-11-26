@@ -15,7 +15,7 @@ define('State', [
   Session.on('view:dashboard', function () {
     save('view:dashboard')
     var Collection = Firebase.Collection.extend({
-      firebase: Firebase.ref('leaderboards')
+      url: Firebase.url('leaderboards')
     })
     var collection = new Collection
     render(new DashboardView({ collection: collection }))
@@ -24,14 +24,17 @@ define('State', [
   Session.on('view:leaderboard', function (id) {
     save('view:leaderboard', id)
     var Model = Firebase.Model.extend({
-      firebase: Firebase.ref('leaderboards', id)
+      url: Firebase.url('leaderboards', id)
     })
     var model = new Model
     var Collection = Firebase.Collection.extend({
-      firebase: Firebase.ref('pages', id),
+      url: Firebase.url('pages', id),
       model: PageModel
     })
     var collection = new Collection
+    collection.comparator = function (model) {
+      return _.result(model, 'priority')
+    }
     render(new LeaderboardView({ model: model, collection: collection }))
   })
 

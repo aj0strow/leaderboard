@@ -1,11 +1,10 @@
 define('Firebase', [
   'Session',
 ], function (Session) {
-  function ref () {
+  function url () {
     var parts = [ FIREBASE_URL, Session.user.uid ]
     parts = parts.concat(_.toArray(arguments))
-    var url = parts.join('/')
-    return new Firebase(url)
+    return parts.join('/')
   }
 
   var Model = Backbone.Firebase.Model.extend({
@@ -23,7 +22,7 @@ define('Firebase', [
   })
 
   return {
-    ref: ref,
+    url: url,
     Model: Model,
     Collection: Collection
   }

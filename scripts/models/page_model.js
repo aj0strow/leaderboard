@@ -1,4 +1,6 @@
 define('PageModel', [], function () {
+  var milliseconds = 10000
+
   var PageModel = Backbone.Model.extend({
     toJSON: function () {
       var props = _.extend({}, this.attributes)
@@ -20,6 +22,23 @@ define('PageModel', [], function () {
 
     priority: function () {
       return -this.get('likes')
+    },
+
+    poll: function () {
+      FB.api('/' + this.id, {
+        fields: 'id,name,link,category,location,likes'
+      }, this.set.bind(this))
+    },
+
+    start: function () {
+      this.timeout = setTimeout(function () {
+        this.poll()
+        this.start()
+      }.bind(this), Math.random() * milliseconds + milliseconds)
+    },
+
+    stop: function () {
+      clearTimeout(this.timeout)
     },
   })
 

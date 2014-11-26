@@ -8,7 +8,7 @@
     "almond": "~0.3.0",
     "bluebird": "~2.3.11",
     "hogan": "~3.0.2",
-    "backfire": "~0.4.0"
+    "backbonefire": "firebase/backbonefire#~0.5.0"
   },
   "resolutions": {
     "backfire": "priority",

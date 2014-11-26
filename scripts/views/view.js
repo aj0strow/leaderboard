@@ -22,6 +22,11 @@ define('View', [], function () {
       var markup = template.render(data)
       this.$el.html(markup)
       return this
+    },
+
+    remove: function () {
+      this.trigger('remove', this)
+      Backbone.View.remove.call(this)
     }
   })
 

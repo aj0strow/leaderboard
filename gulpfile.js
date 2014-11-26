@@ -27,7 +27,7 @@ var paths = {
     'bower_components/backbone/backbone.js',
 
     // firebase
-    'bower_components/backfire/dist/backfire.js',
+    'bower_components/backbonefire/dist/backbonefire.js',
 
     // amd
     'bower_components/almond/almond.js',

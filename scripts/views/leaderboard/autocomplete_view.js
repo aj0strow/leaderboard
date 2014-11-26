@@ -7,8 +7,6 @@ define('Leaderboard.AutocompleteView', [
     model: PageModel
   })
 
-  
-
   var AutocompleteView = View.extend({
     template: 'leaderboard/autocomplete',
 

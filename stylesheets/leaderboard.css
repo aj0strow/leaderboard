@@ -24,6 +24,16 @@
   padding-right: 10px;
 }
 
+.plus .leaderboard-page-likes {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.minus .leaderboard-page-likes {
+  color: #ff0000;
+  font-weight: bold;
+}
+
 .leaderboard-search {
   font-size: 1.4em;
   height: auto !important;
