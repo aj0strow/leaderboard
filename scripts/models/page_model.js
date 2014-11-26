@@ -1,5 +1,5 @@
 define('PageModel', [], function () {
-  var milliseconds = 10000
+  var milliseconds = 20000
 
   var PageModel = Backbone.Model.extend({
     toJSON: function () {

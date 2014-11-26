@@ -39,7 +39,7 @@ define('Leaderboard.PageView', [
         $(this).removeClass('plus minus').dequeue()
       })
 
-      console.log('%s => %d', this.model.get('name'), delta)
+      // console.log('%s => %d', this.model.get('name'), delta)
     },
 
     destroy: function () {

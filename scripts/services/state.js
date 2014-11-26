@@ -35,6 +35,7 @@ define('State', [
     collection.comparator = function (model) {
       return _.result(model, 'priority')
     }
+    collection.sort()
     render(new LeaderboardView({ model: model, collection: collection }))
   })
 
