@@ -13,6 +13,8 @@ require([
   })
 
   $(function () {
+    Backbone.history.start({ pushState: true, silent: true })
+
     Auth.getStatus()
     .then(function (user) {
       Session.user = user
