@@ -1,6 +1,7 @@
 define('Leaderboard.PageView', [
+  'moment',
   'View'
-], function (View) {
+], function (moment, View) {
   var PageView = View.extend({
     initialize: function () {
       this.listenTo(this.model, 'change:likes', this.update)
@@ -18,7 +19,9 @@ define('Leaderboard.PageView', [
     template: 'leaderboard/page',
 
     locals: function () {
-      return { model: this.model.toJSON() }
+      var updated = this.model.get('updated')
+      var timestamp = moment(updated).format('MMM D, YYYY @ hh:mm:ss')
+      return { model: this.model.toJSON(), updated: timestamp }
     },
 
     toggle: function (ev) {

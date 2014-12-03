@@ -5,29 +5,27 @@ define('PageModel', [], function () {
     toJSON: function () {
       var props = _.extend({}, this.attributes)
       props['desc'] = this.getDesc()
-      props['.priority'] = this.priority()
       return props
     },
 
     getDesc: function () {
-      var desc = this.get('category')
+      var desc = [ this.get('category') ]
       var loc = this.get('location')
       if (loc && loc.city) {
-        desc += ' • ' + loc.city
+        desc.push(loc.city)
       } else if (loc && loc.country) {
-        desc += ' • ' + loc.country
+        desc.push(loc.country)
       }
-      return desc
-    },
-
-    priority: function () {
-      return -this.get('likes')
+      return desc.join(' • ')
     },
 
     poll: function () {
       FB.api('/' + this.id, {
-        fields: 'id,name,link,category,location,likes'
-      }, this.set.bind(this))
+        fields: 'id,name,link,likes'
+      }, function (data) {
+        data.updated = Date.now()
+        this.set(data)
+      }.bind(this))
     },
 
     start: function () {

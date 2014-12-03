@@ -1,6 +1,6 @@
-.dashboard-new {
-  padding-top: 50px;
-  height: 200px;
+.dashboard-leaderboard {
+  height: 160px;
+  background-size: cover;
 }
 
 .dashboard-image {

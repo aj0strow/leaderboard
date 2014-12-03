@@ -31,6 +31,9 @@ var paths = {
 
     // amd
     'bower_components/almond/almond.js',
+
+    // modules
+    'bower_components/moment/moment.js',
   ],
   scripts: [
     'scripts/services/**/*.js',

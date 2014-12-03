@@ -27,6 +27,13 @@ define('View', [], function () {
     remove: function () {
       this.trigger('remove', this)
       Backbone.View.prototype.remove.call(this)
+    },
+
+    renderChild: function (key, view) {
+      view.listenTo(this, 'remove', view.remove)
+      var target = this.$('[view="' + key + '"]')
+      view.setElement(target[0])
+      view.render()
     }
   })
 

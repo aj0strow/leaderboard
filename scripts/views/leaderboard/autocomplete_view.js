@@ -23,10 +23,11 @@ define('Leaderboard.AutocompleteView', [
       str = str.replace(/^https:\/\/www\.facebook\.com\//, '')
       var params = {
         q: str, type: 'page', limit: 10,
-        fields: 'id,name,link,category,location,best_page,likes'
+        fields: 'id,name,link,category,location,best_page,likes,cover'
       }  
       FB.api('/search', params, function (response) {
-        this.collection.reset(response.data)
+        var data = _.filter(response.data, 'likes')
+        this.collection.reset(data)
       }.bind(this))
     }, 300, false),
 

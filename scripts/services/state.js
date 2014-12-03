@@ -18,6 +18,10 @@ define('State', [
       url: Firebase.url('leaderboards')
     })
     var collection = new Collection
+    collection.comparator = function (model) {
+      return -model.get('touched')
+    }
+    collection.sort()
     render(new DashboardView({ collection: collection }))
   })
 
@@ -33,7 +37,7 @@ define('State', [
     })
     var collection = new Collection
     collection.comparator = function (model) {
-      return _.result(model, 'priority')
+      return -model.get('likes')
     }
     collection.sort()
     render(new LeaderboardView({ model: model, collection: collection }))

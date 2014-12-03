@@ -5,6 +5,8 @@ define('LeaderboardView', [
   'Leaderboard.PageView',
 ], function (View, Session, AutocompleteView, PageView) {
   var LeaderboardView = View.extend({
+    className: 'leaderboard',
+
     template: 'leaderboard',
 
     locals: function () {
@@ -12,9 +14,8 @@ define('LeaderboardView', [
     },
 
     initialize: function () {
-      this.autocomplete = new AutocompleteView()
-      this.listenTo(this.model, 'sync', this.render)
       this.listenTo(this.model, 'error', this.back)
+      this.autocomplete = new AutocompleteView()
       this.listenTo(this.autocomplete, 'select', this.add)
       this.listenTo(this.collection, 'add', this.show)
     },
@@ -22,8 +23,7 @@ define('LeaderboardView', [
     render: function () {
       View.prototype.render.call(this)
       this.$pages = this.$('[repeat="page"]')
-      this.autocomplete.setElement(this.$('[view="autocomplete"]'))
-      this.autocomplete.render()
+      this.renderChild('autocomplete', this.autocomplete)
       this.collection.each(this.show, this)
       return this
     },
@@ -34,7 +34,6 @@ define('LeaderboardView', [
 
     add: function (model) {
       this.collection.add(model.toJSON())
-      this.model.set('updated', Date.now())
     },
 
     show: function (model) {
@@ -46,6 +45,9 @@ define('LeaderboardView', [
       var index = this.collection.indexOf(model)
       if (index == 0) {
         this.$pages.prepend(node)
+
+        // set to cover photo
+        this.model.set({ first: model.toJSON(), touched: Date.now() })
       } else  {
         var prev = this.collection.at(index - 1)
         var $prev = $('#' + prev.id)

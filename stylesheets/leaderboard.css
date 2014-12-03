@@ -36,12 +36,16 @@
   font-weight: bold;
 }
 
+.leaderboard-header {
+  color: #4c66a4;
+}
+
 .leaderboard-search {
   font-size: 1.4em;
   height: auto !important;
 }
 
-.leaderboard-page-menu {
+.leaderboard-menu {
   padding: 6px 10px;
   overflow: hidden;
   border-top: 1px solid #ccc;

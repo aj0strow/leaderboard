@@ -3,19 +3,18 @@
     <div class="col-md-4">
       <br>
       <div class="row">
-        <div class="col-md-6" click="back">
-          <span class="glyphicon glyphicon-chevron-left"></span> back to dashboard
-        </div>
-        <div class="col-md-6" click="destroy">
-          <span class="glyphicon glyphicon-remove-circle"></span> delete leaderboard
-        </div>
+        <div class="col-md-12 shared-menu">
+          <div class="pull-left" click="back">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="icon-text">back to dashboard</span>
+          </div>
+          <div class="pull-left" click="destroy">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+            <span class="icon-text">delete leaderboard</span>
+          </div>
+        </div>        
       </div>
       <br>
-      <div class="row">
-        <div class="col-md-12">
-          {{ model.id }}
-        </div>
-      </div>
       <div view="autocomplete"></div>
     </div>
     <div class="col-md-8" repeat="page"></div>
