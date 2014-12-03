@@ -1,4 +1,4 @@
-# [`l e a d e r b o a r d`](https://leaderboard-social.firebaseapp.com/)
+# [`L e a d e r b o a r d`](https://leaderboard-social.firebaseapp.com/)
 
 Rank facebook pages by number of likes in real-time.
 
